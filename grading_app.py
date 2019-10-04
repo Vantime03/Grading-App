@@ -16,12 +16,26 @@ Numeric Ranges
 70-79: C
 60-69: D
 0-59: F
+
+Version 2
+Find the specific letter grade (A+, B-, etc). You can check for more specific ranges using if statements, or use modulus % to get the ones-digit to set another string to '+', '-', or ' '. Then you can concatenate that string with your grade string.
 '''
 #variables
 letter = ""
+remainder = 0
+sign = ""
 
 print("Welcome to Grading app!\n")
 grade = int(input("Enter a grade from 1 to 100: "))
+
+remainder = grade % 10
+if 0 <= remainder < 5 and grade != 100:
+    sign = "-"
+elif 5 < remainder or grade == 100:
+    sign = "+"
+else:
+    sign = ""
+
 if 90 <= grade <= 100:
     letter = "A"
 elif 80 <= grade < 90:
@@ -35,4 +49,4 @@ elif 0 <= grade <60:
 else:
     print("That number is out of range. Try again!")
 
-print(f"Your grade is {letter}.")
+print(f"Your grade is {letter+sign}.")
